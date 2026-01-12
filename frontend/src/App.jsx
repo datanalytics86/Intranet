@@ -4,7 +4,6 @@ import HomePage from './pages/HomePage'
 import SolicitudHESPage from './pages/SolicitudHESPage'
 import LoginPage from './pages/LoginPage'
 import DashboardPage from './pages/DashboardPage'
-import ConfiguracionPage from './pages/ConfiguracionPage'
 import PrivateRoute from './components/PrivateRoute'
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
           {/* Rutas protegidas */}
           <Route path="/admin" element={<PrivateRoute />}>
             <Route path="dashboard" element={<DashboardPage />} />
-            <Route path="configuracion" element={<ConfiguracionPage />} />
             <Route index element={<Navigate to="/admin/dashboard" replace />} />
           </Route>
 

@@ -36,38 +36,53 @@ const SolicitudHESPage = () => {
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files)
     const validFiles = []
-    const newErrors = {}
+    let errorMessage = ''
 
-    files.forEach(file => {
+    // Validar máximo 5 archivos primero
+    if (archivos.length + files.length > 5) {
+      setErrors(prev => ({ ...prev, archivos: `Máximo 5 archivos permitidos. Ya tiene ${archivos.length} archivo(s) seleccionado(s).` }))
+      e.target.value = '' // Limpiar input
+      return
+    }
+
+    // Validar cada archivo
+    for (const file of files) {
       // Validar extensión
       const ext = file.name.split('.').pop().toLowerCase()
       if (!['pdf', 'xlsx', 'xls', 'doc', 'docx'].includes(ext)) {
-        newErrors.archivos = 'Solo se permiten archivos PDF, Excel y Word'
-        return
+        errorMessage = `El archivo "${file.name}" no es válido. Solo se permiten archivos PDF, Excel (.xlsx, .xls) y Word (.doc, .docx).`
+        break
       }
 
       // Validar tamaño (10MB)
       if (file.size > 10 * 1024 * 1024) {
-        newErrors.archivos = 'Los archivos no deben superar 10MB'
-        return
+        const sizeMB = (file.size / (1024 * 1024)).toFixed(2)
+        errorMessage = `El archivo "${file.name}" es demasiado grande (${sizeMB} MB). El tamaño máximo es 10 MB.`
+        break
       }
 
       validFiles.push(file)
-    })
+    }
 
-    // Validar máximo 5 archivos
-    if (archivos.length + validFiles.length > 5) {
-      newErrors.archivos = 'Máximo 5 archivos permitidos'
-      setErrors(prev => ({ ...prev, ...newErrors }))
+    // Si hay error, no agregar ningún archivo
+    if (errorMessage) {
+      setErrors(prev => ({ ...prev, archivos: errorMessage }))
+      e.target.value = '' // Limpiar input
       return
     }
 
+    // Agregar archivos válidos y limpiar errores
     setArchivos(prev => [...prev, ...validFiles])
-    setErrors(prev => ({ ...prev, ...newErrors }))
+    setErrors(prev => ({ ...prev, archivos: '' }))
+    e.target.value = '' // Limpiar input para permitir agregar el mismo archivo nuevamente
   }
 
   const removeFile = (index) => {
     setArchivos(prev => prev.filter((_, i) => i !== index))
+    // Limpiar error de archivos si existía
+    if (errors.archivos) {
+      setErrors(prev => ({ ...prev, archivos: '' }))
+    }
   }
 
   const validateForm = () => {

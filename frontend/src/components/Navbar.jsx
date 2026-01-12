@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
-import { LogOut, Settings } from 'lucide-react'
+import { LogOut } from 'lucide-react'
 
 const Navbar = () => {
   const { user, logout } = useAuth()
@@ -29,12 +29,6 @@ const Navbar = () => {
               <span className="text-sm text-gray-600">
                 {user.nombre}
               </span>
-              <Link
-                to="/admin/configuracion"
-                className="p-2 text-gray-600 hover:text-primary-600 transition-colors"
-              >
-                <Settings size={20} />
-              </Link>
               <button
                 onClick={handleLogout}
                 className="flex items-center space-x-1 text-gray-600 hover:text-red-600 transition-colors"

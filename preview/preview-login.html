@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Administrador</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-primary-50 to-blue-100">
+    <div class="min-h-screen flex items-center justify-center px-4">
+        <div class="max-w-md w-full">
+            <!-- Logo y título -->
+            <div class="text-center mb-8">
+                <div class="flex justify-center mb-4">
+                    <div class="w-16 h-16 bg-primary-600 rounded-xl flex items-center justify-center shadow-lg">
+                        <span class="text-white font-bold text-2xl">HES</span>
+                    </div>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-900">Acceso Administrador</h2>
+                <p class="text-gray-600 mt-2">Sistema de Gestión HES</p>
+            </div>
+
+            <!-- Formulario de login -->
+            <div class="bg-white rounded-lg shadow-xl p-8">
+                <form onsubmit="event.preventDefault(); window.location.href='preview-dashboard.html'">
+                    <!-- Email -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Email
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path>
+                                </svg>
+                            </div>
+                            <input
+                                type="email"
+                                value="admin@empresa.com"
+                                class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                                placeholder="admin@empresa.com"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Contraseña
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                </svg>
+                            </div>
+                            <input
+                                type="password"
+                                value="admin123"
+                                class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                                placeholder="••••••••"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Recordar sesión -->
+                    <div class="flex items-center justify-between mb-6">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="w-4 h-4 text-primary-600 border-gray-300 rounded focus:ring-primary-500">
+                            <span class="ml-2 text-sm text-gray-600">Recordarme</span>
+                        </label>
+                        <a href="#" class="text-sm text-primary-600 hover:text-primary-700">
+                            ¿Olvidaste tu contraseña?
+                        </a>
+                    </div>
+
+                    <!-- Botón de login -->
+                    <button
+                        type="submit"
+                        class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 rounded-lg transition-colors shadow-lg hover:shadow-xl"
+                    >
+                        Iniciar Sesión
+                    </button>
+                </form>
+
+                <!-- Credenciales de prueba -->
+                <div class="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <p class="text-xs font-medium text-gray-700 mb-2">🔑 Credenciales de prueba:</p>
+                    <p class="text-xs text-gray-600">Email: <code class="bg-white px-1 rounded">admin@empresa.com</code></p>
+                    <p class="text-xs text-gray-600">Pass: <code class="bg-white px-1 rounded">admin123</code></p>
+                </div>
+            </div>
+
+            <!-- Volver al inicio -->
+            <div class="text-center mt-6">
+                <a href="preview-home.html" class="text-gray-600 hover:text-gray-900 text-sm flex items-center justify-center">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    Volver al inicio
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

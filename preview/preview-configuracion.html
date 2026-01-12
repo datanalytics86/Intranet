@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - Administrador</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                        }
+                    }
+                }
+            }
+        }
+
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-button').forEach(el => {
+                el.classList.remove('border-primary-600', 'text-primary-600');
+                el.classList.add('border-transparent', 'text-gray-500');
+            });
+
+            document.getElementById(tabName).classList.remove('hidden');
+            document.querySelector(`[onclick="showTab('${tabName}')"]`).classList.add('border-primary-600', 'text-primary-600');
+            document.querySelector(`[onclick="showTab('${tabName}')"]`).classList.remove('border-transparent', 'text-gray-500');
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                        HES
+                    </div>
+                    <span class="ml-3 text-xl font-semibold text-gray-900">Mi Empresa</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="preview-dashboard.html" class="text-gray-700 hover:text-primary-600 font-medium">Dashboard</a>
+                    <a href="#" class="text-primary-600 font-medium">Configuración</a>
+                    <div class="flex items-center space-x-3 border-l pl-4">
+                        <div class="text-sm">
+                            <p class="font-medium text-gray-900">Admin</p>
+                            <p class="text-gray-500">admin@empresa.com</p>
+                        </div>
+                        <a href="preview-login.html" class="text-red-600 hover:text-red-700">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="mb-6">
+            <h1 class="text-3xl font-bold text-gray-900">Configuración</h1>
+            <p class="text-gray-600 mt-1">Gestión de usuarios, empresas y configuración general</p>
+        </div>
+
+        <!-- Tabs -->
+        <div class="border-b border-gray-200 mb-6">
+            <nav class="flex space-x-8">
+                <button onclick="showTab('usuarios')" class="tab-button py-4 px-1 border-b-2 font-medium text-sm border-primary-600 text-primary-600">
+                    Usuarios
+                </button>
+                <button onclick="showTab('empresas')" class="tab-button py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                    Empresas
+                </button>
+                <button onclick="showTab('general')" class="tab-button py-4 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300">
+                    General
+                </button>
+            </nav>
+        </div>
+
+        <!-- Tab Usuarios -->
+        <div id="usuarios" class="tab-content">
+            <div class="bg-white rounded-lg shadow-md">
+                <div class="p-6 border-b flex justify-between items-center">
+                    <h2 class="text-xl font-semibold text-gray-900">Usuarios Administradores</h2>
+                    <button onclick="alert('Crear nuevo usuario')" class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                        Nuevo Usuario
+                    </button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nombre</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Estado</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Fecha Creación</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
+                                            <span class="text-primary-600 font-semibold">AD</span>
+                                        </div>
+                                        <div class="ml-4">
+                                            <p class="text-sm font-medium text-gray-900">Administrador</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                    admin@empresa.com
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                        Activo
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                    01/01/2024
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                    <button class="text-primary-600 hover:text-primary-800 mr-3">Editar</button>
+                                    <button class="text-red-600 hover:text-red-800">Eliminar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="flex items-center">
+                                        <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                                            <span class="text-purple-600 font-semibold">MG</span>
+                                        </div>
+                                        <div class="ml-4">
+                                            <p class="text-sm font-medium text-gray-900">María González</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                    maria.g@empresa.com
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                        Activo
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                    15/01/2024
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                    <button class="text-primary-600 hover:text-primary-800 mr-3">Editar</button>
+                                    <button class="text-red-600 hover:text-red-800">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Empresas -->
+        <div id="empresas" class="tab-content hidden">
+            <div class="bg-white rounded-lg shadow-md">
+                <div class="p-6 border-b flex justify-between items-center">
+                    <h2 class="text-xl font-semibold text-gray-900">Empresas / Contratos</h2>
+                    <button onclick="alert('Crear nueva empresa')" class="px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                        Nueva Empresa
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Tarjeta Empresa 1 -->
+                        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                    </svg>
+                                </div>
+                                <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                    Activo
+                                </span>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 mb-1">Empresa A - Contrato 2024</h3>
+                            <p class="text-sm text-gray-500 mb-4">12 solicitudes</p>
+                            <div class="flex gap-2">
+                                <button class="flex-1 px-3 py-1 text-sm text-primary-600 hover:text-primary-800 border border-primary-600 rounded">
+                                    Editar
+                                </button>
+                                <button class="px-3 py-1 text-sm text-red-600 hover:text-red-800 border border-red-600 rounded">
+                                    Eliminar
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta Empresa 2 -->
+                        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                    </svg>
+                                </div>
+                                <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                    Activo
+                                </span>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 mb-1">Empresa B - Proyecto Norte</h3>
+                            <p class="text-sm text-gray-500 mb-4">8 solicitudes</p>
+                            <div class="flex gap-2">
+                                <button class="flex-1 px-3 py-1 text-sm text-primary-600 hover:text-primary-800 border border-primary-600 rounded">
+                                    Editar
+                                </button>
+                                <button class="px-3 py-1 text-sm text-red-600 hover:text-red-800 border border-red-600 rounded">
+                                    Eliminar
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Tarjeta Empresa 3 -->
+                        <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                            <div class="flex justify-between items-start mb-3">
+                                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                    </svg>
+                                </div>
+                                <span class="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
+                                    Activo
+                                </span>
+                            </div>
+                            <h3 class="font-semibold text-gray-900 mb-1">Contrato C - Servicios Generales</h3>
+                            <p class="text-sm text-gray-500 mb-4">4 solicitudes</p>
+                            <div class="flex gap-2">
+                                <button class="flex-1 px-3 py-1 text-sm text-primary-600 hover:text-primary-800 border border-primary-600 rounded">
+                                    Editar
+                                </button>
+                                <button class="px-3 py-1 text-sm text-red-600 hover:text-red-800 border border-red-600 rounded">
+                                    Eliminar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab General -->
+        <div id="general" class="tab-content hidden">
+            <div class="bg-white rounded-lg shadow-md">
+                <div class="p-6 border-b">
+                    <h2 class="text-xl font-semibold text-gray-900">Configuración General</h2>
+                </div>
+                <div class="p-6 space-y-6">
+                    <!-- Nombre de empresa -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Nombre de Empresa
+                        </label>
+                        <input
+                            type="text"
+                            value="Mi Empresa"
+                            class="w-full md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
+                        >
+                        <p class="text-sm text-gray-500 mt-1">Este nombre aparecerá en el portal público</p>
+                    </div>
+
+                    <!-- Logo -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Logo de Empresa
+                        </label>
+                        <div class="flex items-center gap-4">
+                            <div class="w-20 h-20 bg-primary-600 rounded-lg flex items-center justify-center">
+                                <span class="text-white font-bold text-2xl">HES</span>
+                            </div>
+                            <div>
+                                <button class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium rounded-lg">
+                                    Cambiar Logo
+                                </button>
+                                <p class="text-sm text-gray-500 mt-1">Formato recomendado: PNG o SVG, 200x200px</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="my-6">
+
+                    <!-- Emails del equipo HES -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Emails del Equipo HES
+                        </label>
+                        <textarea
+                            rows="3"
+                            class="w-full md:w-2/3 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500"
+                            placeholder="equipo@empresa.com, admin@empresa.com"
+                        >equipo@empresa.com, admin@empresa.com</textarea>
+                        <p class="text-sm text-gray-500 mt-1">
+                            Separe múltiples emails con comas. Estos recibirán notificaciones de nuevas solicitudes.
+                        </p>
+                    </div>
+
+                    <hr class="my-6">
+
+                    <!-- Configuración de emails -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4">Configuración de Emails (SMTP)</h3>
+
+                        <div class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                                        Servidor SMTP
+                                    </label>
+                                    <input
+                                        type="text"
+                                        value="smtp.gmail.com"
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                                    >
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                                        Puerto
+                                    </label>
+                                    <input
+                                        type="number"
+                                        value="587"
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                                    >
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">
+                                    Email de envío
+                                </label>
+                                <input
+                                    type="email"
+                                    value="noreply@empresa.com"
+                                    class="w-full md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg"
+                                >
+                            </div>
+
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                <div class="flex">
+                                    <svg class="w-5 h-5 text-blue-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <div>
+                                        <p class="text-sm font-medium text-blue-900">Configuración avanzada</p>
+                                        <p class="text-sm text-blue-700 mt-1">
+                                            Las credenciales SMTP se configuran mediante variables de entorno en el servidor.
+                                            Consulte la documentación para más detalles.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botón guardar -->
+                    <div class="flex justify-end pt-4">
+                        <button onclick="alert('Configuración guardada exitosamente')" class="px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg">
+                            Guardar Cambios
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

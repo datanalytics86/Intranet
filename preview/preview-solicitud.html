@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de HES</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                        HES
+                    </div>
+                    <span class="ml-3 text-xl font-semibold text-gray-900">Mi Empresa</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Formulario -->
+    <div class="min-h-screen py-8 px-4">
+        <div class="max-w-3xl mx-auto">
+            <!-- Header -->
+            <div class="mb-8">
+                <a href="preview-home.html" class="flex items-center text-gray-600 hover:text-gray-900 mb-4">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    Volver
+                </a>
+                <h1 class="text-3xl font-bold text-gray-900">Solicitud de HES</h1>
+                <p class="text-gray-600 mt-2">Complete el formulario para solicitar una Hoja de Estado de Pago</p>
+            </div>
+
+            <!-- Formulario -->
+            <div class="bg-white rounded-lg shadow-md p-6 space-y-6">
+                <!-- Nombre -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                        Nombre del Solicitante <span class="text-red-500">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        placeholder="Juan Pérez"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                    >
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                        Email <span class="text-red-500">*</span>
+                    </label>
+                    <input
+                        type="email"
+                        placeholder="juan.perez@empresa.com"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                    >
+                </div>
+
+                <!-- Empresa/Contrato -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                        Empresa/Contrato <span class="text-red-500">*</span>
+                    </label>
+                    <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                        <option value="">Seleccione una empresa</option>
+                        <option>Empresa A - Contrato 2024</option>
+                        <option>Empresa B - Proyecto Norte</option>
+                        <option>Contrato C - Servicios Generales</option>
+                    </select>
+                </div>
+
+                <!-- Moneda -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                        Moneda EDP <span class="text-red-500">*</span>
+                    </label>
+                    <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500">
+                        <option value="">Seleccione una moneda</option>
+                        <option>UF</option>
+                        <option>CLP</option>
+                        <option>AUD</option>
+                        <option>USD</option>
+                        <option>Otra</option>
+                    </select>
+                </div>
+
+                <!-- Monto -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                        Monto a Liberar <span class="text-red-500">*</span>
+                    </label>
+                    <input
+                        type="number"
+                        placeholder="1000000"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                    >
+                </div>
+
+                <!-- Descripción -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                        Descripción/Glosa <span class="text-red-500">*</span>
+                    </label>
+                    <textarea
+                        rows="4"
+                        placeholder="Descripción detallada del estado de pago..."
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                    ></textarea>
+                </div>
+
+                <!-- Archivos -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                        Archivos de Respaldo
+                    </label>
+                    <p class="text-sm text-gray-500 mb-2">
+                        Máximo 5 archivos. Formatos: PDF, Excel, Word. Tamaño máximo: 10MB por archivo.
+                    </p>
+
+                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-primary-500 transition-colors cursor-pointer">
+                        <svg class="w-10 h-10 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                        </svg>
+                        <span class="text-sm text-gray-600">Haga clic para seleccionar archivos</span>
+                    </div>
+
+                    <!-- Lista de archivos de ejemplo -->
+                    <div class="mt-4 space-y-2">
+                        <div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
+                            <div class="flex items-center flex-1">
+                                <svg class="w-5 h-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path>
+                                </svg>
+                                <span class="text-sm text-gray-700">estado_pago_enero.pdf</span>
+                            </div>
+                            <span class="text-xs text-gray-500 mx-2">245 KB</span>
+                            <button class="text-red-500 hover:text-red-700">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
+                            <div class="flex items-center flex-1">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"></path>
+                                </svg>
+                                <span class="text-sm text-gray-700">respaldo_facturacion.xlsx</span>
+                            </div>
+                            <span class="text-xs text-gray-500 mx-2">128 KB</span>
+                            <button class="text-red-500 hover:text-red-700">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botones -->
+                <div class="flex gap-4 pt-4">
+                    <a href="preview-home.html" class="flex-1 px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium rounded-lg text-center transition-colors">
+                        Cancelar
+                    </a>
+                    <button onclick="alert('Formulario enviado! ✅')" class="flex-1 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors">
+                        Enviar Solicitud
+                    </button>
+                </div>
+            </div>
+
+            <!-- Info adicional -->
+            <div class="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div class="flex">
+                    <svg class="w-5 h-5 text-blue-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                    </svg>
+                    <div>
+                        <p class="text-sm font-medium text-blue-900">¿Qué sucede después?</p>
+                        <p class="text-sm text-blue-700 mt-1">
+                            Recibirá un email de confirmación con su número de seguimiento. El equipo HES procesará su solicitud y le notificará cuando esté lista.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
